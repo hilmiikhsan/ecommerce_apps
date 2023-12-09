@@ -14,10 +14,13 @@ else
 endif
 
 goose-up:
-	@goose -dir pkg/database/migrations postgres "host=localhost user=postgres password=password dbname=db_ecommerce sslmode=disable" up
+# example : make goose-up
+	@goose -dir pkg/database/migrations postgres "host=localhost user=postgres password=21012123op dbname=db_ecommerce sslmode=disable" up
 
 goose-down:
-	@goose -dir pkg/database/migrations postgres "host=localhost user=postgres password=password dbname=db_ecommerce sslmode=disable" down
+# example : make goose-down
+	@goose -dir pkg/database/migrations postgres "host=localhost user=postgres password=21012123op dbname=db_ecommerce sslmode=disable" down
 
 goose-status:
-	@goose -dir pkg/database/migrations postgres "host=localhost user=postgres password=password dbname=db_ecommerce sslmode=disable" status
+# example : make goose-status
+	@goose -dir pkg/database/migrations postgres "host=localhost user=postgres password=21012123op dbname=db_ecommerce sslmode=disable" status
