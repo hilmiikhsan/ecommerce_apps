@@ -1,0 +1,12 @@
+app:
+  port: ":4000"
+
+db:
+  host: "localhost"
+  port: "5432"
+  user: "postgres"
+  password: ""
+  name: ""
+  maxIdleConns: 30
+  maxOpenConns: 10
+  maxConnLifetime: 10
