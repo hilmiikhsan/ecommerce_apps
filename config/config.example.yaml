@@ -10,3 +10,13 @@ db:
   maxIdleConns: 30
   maxOpenConns: 10
   maxConnLifetime: 10
+
+jwt:
+  secret: "secret"
+  tokenLifeTimeHour: 24
+
+redis:
+  addr: "127.0.0.1:6379"
+  password: ""
+  timeout: 10
+  maxIdle: 10

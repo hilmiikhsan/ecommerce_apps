@@ -7,8 +7,10 @@ import (
 )
 
 type Config struct {
-	App App `yaml:"app"`
-	DB  DB  `yaml:"db"`
+	App   App   `yaml:"app"`
+	DB    DB    `yaml:"db"`
+	JWT   JWT   `yaml:"jwt"`
+	Redis Redis `yaml:"redis"`
 }
 
 type App struct {
@@ -24,6 +26,18 @@ type DB struct {
 	MaxIdleConns    int    `yaml:"maxIdleConns"`
 	MaxOpenConns    int    `yaml:"maxOpenConns"`
 	MaxConnLifetime int    `yaml:"maxConnLifetime"`
+}
+
+type JWT struct {
+	Secret            string `yaml:"secret"`
+	TokenLifeTimeHour int    `yaml:"tokenLifeTimeHour"`
+}
+
+type Redis struct {
+	Addr     string `yaml:"addr"`
+	Password string `yaml:"password"`
+	Timeout  int    `yaml:"timeout"`
+	MaxIdle  int    `yaml:"maxIdle"`
 }
 
 var Cfg *Config
