@@ -20,3 +20,7 @@ redis:
   password: ""
   timeout: 10
   maxIdle: 10
+
+meilisearch:
+  host: "http://localhost:7700"
+  APIKey: ""
