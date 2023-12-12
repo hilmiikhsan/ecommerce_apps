@@ -6,6 +6,7 @@ import (
 
 	"github.com/ecommerce/config"
 	"github.com/ecommerce/domain/auth"
+	"github.com/ecommerce/domain/category"
 	"github.com/ecommerce/pkg/database"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -38,6 +39,7 @@ func main() {
 	}
 
 	auth.RegisterServiceAuth(app, auth.DB{Dbx: db, Redis: rdb, Cfg: config.Cfg.JWT})
+	category.RegisterServiceCategory(app, category.DB{Dbx: db})
 
 	app.Listen(config.Cfg.App.Port)
 }
