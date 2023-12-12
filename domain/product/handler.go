@@ -20,7 +20,7 @@ func NewProductHandler(service ProductService) ProductHandler {
 	}
 }
 
-func (p ProductHandler) CreateProduc(c *fiber.Ctx) error {
+func (p ProductHandler) CreateProduct(c *fiber.Ctx) error {
 	var req dto.CreateOrUpdateProductRequest
 	id := c.Locals("id").(string)
 
