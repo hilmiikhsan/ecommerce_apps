@@ -23,9 +23,11 @@ func AuthMiddleware() fiber.Handler {
 
 		id := claims.ID
 		email := claims.Email
+		role := claims.Role
 
 		ctx.Locals("id", id)
 		ctx.Locals("email", email)
+		ctx.Locals("role", role)
 
 		return ctx.Next()
 	}

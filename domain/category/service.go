@@ -33,5 +33,5 @@ func (c CategoryService) GetListCategory(ctx context.Context) (response []dto.Ge
 
 	response = entity.NewCategory().CategoryResponse(categories)
 
-	return response, nil
+	return
 }

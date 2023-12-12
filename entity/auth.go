@@ -91,6 +91,7 @@ func (a Auth) GenerateAccessToken(accessToken string) (token string, err error) 
 	token, err = middleware.GenerateNewJWT(&middleware.Claims{
 		ID:    a.ID,
 		Email: a.Email,
+		Role:  a.Role,
 	})
 	if err != nil {
 		return "", err

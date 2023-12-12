@@ -8,6 +8,8 @@ CREATE TABLE IF NOT EXISTS "products" (
     "stock" INTEGER NOT NULL DEFAULT 0,
     "category_id" INTEGER NOT NULL,
     "merchant_id" INTEGER NOT NULL,
+    "image_url" VARCHAR(255) NOT NULL,
+    "sku" VARCHAR(255) NOT NULL,
     "created_by" UUID NOT NULL,
     "updated_by" UUID NULL,
     "deleted_by" UUID NULL,
