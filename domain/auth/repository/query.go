@@ -10,7 +10,7 @@ const (
 		id,
 		email,
 		password,
-		role,
+		role
 	FROM auth
 	WHERE email = $1
 	`
