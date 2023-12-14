@@ -7,6 +7,12 @@ import (
 	"github.com/ecommerce/entity"
 )
 
+type Service interface {
+	Register(ctx context.Context, req entity.Auth) (err error)
+	Login(ctx context.Context, req entity.Auth) (response entity.Auth, accessToken string, err error)
+	UpdateRole(ctx context.Context, email string) (err error)
+}
+
 type AuthService struct {
 	repository Repository
 	redis      RedisRepository
@@ -75,7 +81,7 @@ func (a AuthService) Login(ctx context.Context, req entity.Auth) (response entit
 	return user, accessToken, nil
 }
 
-func (a AuthService) UpdateRole(ctx context.Context, id, email string) (err error) {
+func (a AuthService) UpdateRole(ctx context.Context, email string) (err error) {
 	user, err := a.repository.GetByEmail(ctx, email)
 	if err != nil {
 		return
@@ -85,7 +91,7 @@ func (a AuthService) UpdateRole(ctx context.Context, id, email string) (err erro
 		return
 	}
 
-	if err = a.repository.UpdateRole(ctx, id); err != nil {
+	if err = a.repository.UpdateRole(ctx, user.ID); err != nil {
 		return
 	}
 
