@@ -40,6 +40,11 @@ type Redis struct {
 	MaxIdle  int    `yaml:"maxIdle"`
 }
 
+type PaymentGateway struct {
+	PaymentGatewayType string `yaml:"paymentGatewayType"`
+	token              string `yaml:"token"`
+}
+
 var Cfg *Config
 
 func LoadConfig(filename string) (err error) {

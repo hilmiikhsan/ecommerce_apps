@@ -15,12 +15,12 @@ endif
 
 goose-up:
 # example : make goose-up
-	@goose -dir pkg/database/migrations postgres "host=localhost user=postgres password=21012123op dbname=db_ecommerce sslmode=disable" up
+	@goose -dir pkg/database/migrations postgres "host=localhost port=39543 user=root-admin password=root-password dbname=ecommerce sslmode=disable" up
 
 goose-down:
 # example : make goose-down
-	@goose -dir pkg/database/migrations postgres "host=localhost user=postgres password=21012123op dbname=db_ecommerce sslmode=disable" down
+	@goose -dir pkg/database/migrations postgres "host=localhost port=39543 user=root-admin password=root-password dbname=ecommerce sslmode=disable" down
 
 goose-status:
 # example : make goose-status
-	@goose -dir pkg/database/migrations postgres "host=localhost user=postgres password=21012123op dbname=db_ecommerce sslmode=disable" status
+	@goose -dir pkg/database/migrations postgres "host=localhost port=39543 user=root-admin password=root-password dbname=ecommerce sslmode=disable" status
