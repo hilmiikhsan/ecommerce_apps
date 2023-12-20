@@ -68,10 +68,9 @@ func (a AuthHandler) Login(c *fiber.Ctx) error {
 }
 
 func (a AuthHandler) UpdateRole(c *fiber.Ctx) error {
-	id := c.Locals("id").(string)
 	email := c.Locals("email").(string)
 
-	if err := a.service.UpdateRole(c.UserContext(), id, email); err != nil {
+	if err := a.service.UpdateRole(c.UserContext(), email); err != nil {
 		logs.Logger(logs.GetFunctionPath(), logs.LoggerLevelError, fmt.Sprintf("Error : %s", err.Error()))
 		return WriteError(c, err)
 	}
