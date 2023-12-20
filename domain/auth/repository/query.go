@@ -2,7 +2,7 @@ package repository
 
 const (
 	queryCreate = `
-	INSERT INTO auth (email, password,) VALUES (:email, :password)
+	INSERT INTO auth (email, password) VALUES (:email, :password)
 	`
 
 	queryGetByEmail = `
@@ -10,7 +10,7 @@ const (
 		id,
 		email,
 		password,
-		role,
+		role
 	FROM auth
 	WHERE email = $1
 	`

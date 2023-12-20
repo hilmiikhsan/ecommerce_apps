@@ -19,6 +19,7 @@ func RegisterServiceAuth(router fiber.Router, db DB) {
 	authRepository := repository.NewAuthRepository(db.Dbx)
 	redisRepository := repository.NewRedisRepository(db.Redis)
 	service := NewAuthService(authRepository, redisRepository, db.Cfg)
+	// service := NewAuthService(authRepository, redisRepository)
 	handler := NewAuthHandler(service)
 
 	var authRouter = router.Group("/v1/auth")
@@ -26,5 +27,6 @@ func RegisterServiceAuth(router fiber.Router, db DB) {
 		authRouter.Post("/register", handler.Register)
 		authRouter.Post("/login", handler.Login)
 		authRouter.Patch("/role", middleware.AuthMiddleware(), handler.UpdateRole)
+		// authRouter.Patch("/role", handler.UpdateRole)
 	}
 }

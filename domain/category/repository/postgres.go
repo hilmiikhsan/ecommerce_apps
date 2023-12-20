@@ -40,3 +40,12 @@ func (c CategoryRepository) GetAll(ctx context.Context) (categories []entity.Cat
 
 	return
 }
+
+func (c CategoryRepository) GetById(ctx context.Context, id int) (category entity.Category, err error) {
+	err = c.db.GetContext(ctx, &category, queryGetById, id)
+	if err != nil {
+		return
+	}
+
+	return
+}

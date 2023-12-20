@@ -14,6 +14,11 @@ var svc = CategoryService{}
 
 type mockCategoryRepository struct{}
 
+// GetById implements Repository.
+func (mockCategoryRepository) GetById(ctx context.Context, id int) (category entity.Category, err error) {
+	return category, nil
+}
+
 // Create implements Repository.
 func (mockCategoryRepository) Create(ctx context.Context, category entity.Category) (err error) {
 	return Create()
@@ -35,7 +40,7 @@ func init() {
 	svc = NewCategoryService(mock)
 }
 
-func TestCreate(t *testing.T) {
+func TestCreateCategory(t *testing.T) {
 	type testCase struct {
 		title       string
 		expectedErr error
@@ -82,7 +87,7 @@ func TestCreate(t *testing.T) {
 	}
 }
 
-func TestGetAll(t *testing.T) {
+func TestGetListCategory(t *testing.T) {
 	type testCase struct {
 		title         string
 		expectedErr   error

@@ -10,10 +10,10 @@ import (
 )
 
 type CategoryHandler struct {
-	service CategoryService
+	service Service
 }
 
-func NewCategoryHandler(service CategoryService) CategoryHandler {
+func NewCategoryHandler(service Service) CategoryHandler {
 	return CategoryHandler{
 		service: service,
 	}

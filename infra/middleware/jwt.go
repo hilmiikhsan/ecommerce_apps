@@ -12,12 +12,13 @@ const (
 )
 
 var (
-	ErrUnAuthorized = errors.New("unauthorized")
+	ErrUnAuthorized = errors.New("please provide jwt token")
 )
 
 type Claims struct {
 	ID    string `json:"id"`
 	Email string `json:"email"`
+	Role  string `json:"role"`
 	jwt.RegisteredClaims
 }
 
