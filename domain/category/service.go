@@ -7,6 +7,11 @@ import (
 	"github.com/ecommerce/entity"
 )
 
+type Service interface {
+	CreateCategory(ctx context.Context, req entity.Category) (err error)
+	GetListCategory(ctx context.Context) (response []dto.GetListCategoryResponse, err error)
+}
+
 type CategoryService struct {
 	repository Repository
 }

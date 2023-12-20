@@ -207,8 +207,8 @@ func TestCreateProductHandler(t *testing.T) {
 				CategoryId:  3,
 				ImageUrl:    "test.png",
 			},
-			expectedStatusCode: fiber.StatusNotFound,
-			endpoint:           "/v1/product",
+			expectedStatusCode: fiber.StatusInternalServerError,
+			endpoint:           "/v1/products",
 			contentType:        "application/xml",
 			requestHeader:      "Bearer ",
 			before: func() error {
