@@ -11,28 +11,20 @@ import (
 
 func WriteError(c *fiber.Ctx, err error) error {
 	switch {
-	case err == entity.ErrProductNameIsRequired:
+	case err == entity.ErrAddressIsRequired:
 		return write(c, http.StatusBadRequest, "bad request", err.Error(), "40005", nil)
-	case err == entity.ErrDescriptionIsRequired:
+	case err == entity.ErrNameIsRequired:
+		return write(c, http.StatusBadRequest, "bad request", err.Error(), "40005", nil)
+	case err == entity.ErrDateOfBirtIsRequired:
 		return write(c, http.StatusBadRequest, "bad request", err.Error(), "40006", nil)
-	case err == entity.ErrPriceIsRequired:
+	case err == entity.ErrPhoneNumberIsRequired:
 		return write(c, http.StatusBadRequest, "bad request", err.Error(), "40001", nil)
-	case err == entity.ErrPriceIsInvalid:
+	case err == entity.ErrGenderIsInvalid:
 		return write(c, http.StatusBadRequest, "bad request", err.Error(), "40002", nil)
-	case err == entity.ErrStockIsRequired:
+	case err == entity.ErrAddressIsRequired:
 		return write(c, http.StatusBadRequest, "bad request", err.Error(), "40003", nil)
-	case err == entity.ErrStockIsInvalid:
-		return write(c, http.StatusBadRequest, "bad request", err.Error(), "40004", nil)
-	case err == entity.ErrCategoryIdIsRequired:
-		return write(c, http.StatusBadRequest, "bad request", err.Error(), "40009", nil)
-	case err == entity.ErrCategoryNotFound:
-		return write(c, http.StatusBadRequest, "bad request", err.Error(), "40010", nil)
-	case err == entity.ErrImageUrlIsRequired:
-		return write(c, http.StatusBadRequest, "bad request", err.Error(), "40007", nil)
 	case err == entity.ErrInvalidRole:
 		return write(c, http.StatusUnauthorized, "unauthorized", err.Error(), "40102", nil)
-	case err == entity.ErrProductNotFound:
-		return write(c, http.StatusNotFound, "not found", err.Error(), "40401", nil)
 	default:
 		if iSSQLIntegrityConstraintViolation(err) {
 			return write(c, http.StatusInternalServerError, "internal server error", "error repository", "50001", nil)

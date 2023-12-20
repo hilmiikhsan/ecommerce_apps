@@ -42,40 +42,30 @@ func (a AuthHandler) CreateUserProfile(c *fiber.Ctx) error {
 	return WriteSuccess(c, "registration success", nil, fiber.StatusCreated)
 }
 
-// func (a AuthHandler) Login(c *fiber.Ctx) error {
-// 	var req dto.AuthRequest
+func (a AuthHandler) UpdateUserProfile(c *fiber.Ctx) error {
+	var req dto.CreateOrUpdateUserRequest
+	id := c.Locals("id").(string)
 
-// 	if err := c.BodyParser(&req); err != nil {
-// 		return WriteError(c, err)
-// 	}
+	// name := c.Locals("name").(string)
+	// dateOfBirth := c.Locals("name").(string)
+	// phoneNumber := c.Locals("name").(string)
+	// gender := c.Locals("name").(string)
+	// address := c.Locals("name").(string)
+	// imageUrl := c.Locals("name").(string)
 
-// 	model, err := entity.NewAuth().Validate(req)
-// 	if err != nil {
-// 		logs.Logger(logs.GetFunctionPath(), logs.LoggerLevelError, fmt.Sprintf("Error : %s", err.Error()))
-// 		return WriteError(c, err)
-// 	}
+	if err := c.BodyParser(&req); err != nil {
+		return WriteError(c, err)
+	}
 
-// 	response, accessToken, err := a.service.Login(c.UserContext(), model)
-// 	if err != nil {
-// 		logs.Logger(logs.GetFunctionPath(), logs.LoggerLevelError, fmt.Sprintf("Error : %s", err.Error()))
-// 		return WriteError(c, err)
-// 	}
+	model, err := entity.NewUser().Validate(req, id)
+	if err != nil {
+		logs.Logger(logs.GetFunctionPath(), logs.LoggerLevelError, fmt.Sprintf("Error : %", err.Error()))
+		return WriteError(c, err)
+	}
 
-// 	payload := dto.LoginResponse{
-// 		AccessToken: accessToken,
-// 		Role:        response.Role,
-// 	}
-
-// 	return WriteSuccess(c, "login success", payload, fiber.StatusOK)
-// }
-
-// func (a AuthHandler) UpdateRole(c *fiber.Ctx) error {
-// 	email := c.Locals("email").(string)
-
-// 	if err := a.service.UpdateRole(c.UserContext(), email); err != nil {
-// 		logs.Logger(logs.GetFunctionPath(), logs.LoggerLevelError, fmt.Sprintf("Error : %s", err.Error()))
-// 		return WriteError(c, err)
-// 	}
-
-// 	return WriteSuccess(c, "update role success", nil, fiber.StatusOK)
-// }
+	if err := a.service.repository.UpdateUser(c.UserContext(), id, model); err != nil {
+		logs.Logger(logs.GetFunctionPath(), logs.LoggerLevelError, fmt.Sprintf("Error : %", err.Error()))
+		return WriteError(c, err)
+	}
+	return WriteSuccess(c, "update profile success", nil, fiber.StatusOK)
+}

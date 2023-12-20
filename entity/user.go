@@ -14,6 +14,7 @@ var (
 	ErrGenderIsInvalid       = errors.New("gender is invalid")
 	ErrAddressIsRequired     = errors.New("address is required")
 	ErrImageURLIsInvalid     = errors.New("image url is invalid")
+	ErrInvalidRole           = errors.New("role is invalid")
 	layout                   = "2006-01-02"
 )
 
