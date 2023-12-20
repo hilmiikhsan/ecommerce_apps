@@ -11,17 +11,18 @@ import (
 )
 
 type ProductHandler struct {
-	service ProductService
+	service Service
 }
 
-func NewProductHandler(service ProductService) ProductHandler {
+func NewProductHandler(service Service) ProductHandler {
 	return ProductHandler{
 		service: service,
 	}
 }
 
-func (p ProductHandler) CreateProduct(c *fiber.Ctx) error {
+func (p ProductHandler) CreateProducts(c *fiber.Ctx) error {
 	var req dto.CreateOrUpdateProductRequest
+
 	id := c.Locals("id").(string)
 
 	if err := c.BodyParser(&req); err != nil {

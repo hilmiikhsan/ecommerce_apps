@@ -77,6 +77,7 @@ func (p Product) Validate(req dto.CreateOrUpdateProductRequest, id string) (Prod
 		return p, ErrImageUrlIsRequired
 	}
 
+	p.ID = req.ID
 	p.Name = req.Name
 	p.Description = req.Description
 	p.Price = req.Price

@@ -22,7 +22,7 @@ func RegisterServiceProduct(router fiber.Router, db DB) {
 
 	var productRouter = router.Group("/v1/products")
 	{
-		productRouter.Post("/", middleware.AuthMiddleware(), handler.CreateProduct)
+		productRouter.Post("/", middleware.AuthMiddleware(), handler.CreateProducts)
 		productRouter.Get("/", middleware.AuthMiddleware(), handler.GetListProduct)
 		productRouter.Get("/id/:product_id", middleware.AuthMiddleware(), handler.GetDetailProduct)
 		productRouter.Put("/id/:product_id", middleware.AuthMiddleware(), handler.UpdateProduct)
