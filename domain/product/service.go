@@ -10,6 +10,14 @@ import (
 	"github.com/ecommerce/entity"
 )
 
+type Service interface {
+	CreateProduct(ctx context.Context, req entity.Product, token string) (err error)
+	GetListProduct(ctx context.Context, token, queryParam string, limit, page int) (response []dto.GetListProductResponse, totalData int, err error)
+	GetDetailProduct(ctx context.Context, id int, token string) (response dto.GetDetailProductResponse, err error)
+	UpdateProduct(ctx context.Context, req entity.Product, token string) (err error)
+	GetDetailProductUserPerspective(ctx context.Context, sku string) (response dto.GetDetailProductUserPerspectiveResponse, err error)
+}
+
 type ProductService struct {
 	repository         Repository
 	merchantRepository merchant.Repository

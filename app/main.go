@@ -8,6 +8,7 @@ import (
 	"github.com/ecommerce/domain/auth"
 	"github.com/ecommerce/domain/category"
 	"github.com/ecommerce/domain/product"
+	"github.com/ecommerce/infra/middleware"
 	"github.com/ecommerce/pkg/database"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -28,6 +29,8 @@ func main() {
 	if err != nil {
 		log.Println("error when try to LoadConfig with error :", err.Error())
 	}
+	jwt := config.Cfg.JWT
+	middleware.SetJWTSecretKey(jwt.Secret)
 
 	db, err := database.ConnectSQLXPostgres(config.Cfg.DB)
 	if err != nil {
