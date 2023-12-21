@@ -7,10 +7,11 @@ import (
 )
 
 type Config struct {
-	App   App   `yaml:"app"`
-	DB    DB    `yaml:"db"`
-	JWT   JWT   `yaml:"jwt"`
-	Redis Redis `yaml:"redis"`
+	App              App              `yaml:"app"`
+	DB               DB               `yaml:"db"`
+	JWT              JWT              `yaml:"jwt"`
+	Redis            Redis            `yaml:"redis"`
+	FileCloudStorage FileCloudStorage `yaml:"fileCloudStorage"`
 }
 
 type App struct {
@@ -38,6 +39,12 @@ type Redis struct {
 	Password string `yaml:"password"`
 	Timeout  int    `yaml:"timeout"`
 	MaxIdle  int    `yaml:"maxIdle"`
+}
+
+type FileCloudStorage struct {
+	CloudinaryName      string `yaml:"cloudinaryName"`
+	CloudinaryAPIKey    string `yaml:"cloudinaryAPIKey"`
+	CloudinaryAPISecret string `yaml:"cloudinaryAPISecret"`
 }
 
 var Cfg *Config
