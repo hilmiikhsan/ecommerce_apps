@@ -24,3 +24,8 @@ redis:
 meilisearch:
   host: "http://localhost:7700"
   APIKey: ""
+
+fileCloudStorage:
+  cloudinaryName: "cloudName"
+  cloudinaryAPIKey: "cloudAPIKey"
+  cloudinaryAPISecret: "cloudAPISecret"
